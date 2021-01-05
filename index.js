@@ -45,7 +45,8 @@ const kelToCel = (temp)=>{
     return celcius.toFixed(2);
 }
 const getLocalTime = (timestamp)=>{
-    return (new Date(timestamp*1000).toLocaleTimeString());
+    console.log(new Date(1609809185000).toLocaleTimeString('en-US',{timeZone:'IST'}));
+    return (new Date(timestamp*1000).toLocaleTimeString("en-US", {timeZone: "IST"}));
 }
 const replaceVal = (htmlFile,data)=>{
     const background = `background:${changeContainerBgColor(kelToCel(data.main.temp))}`;
