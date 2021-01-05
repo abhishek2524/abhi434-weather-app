@@ -7,7 +7,11 @@ const requests = require('requests');
 const url = require('url');
 const homeFile = fs.readFileSync("home.html",'utf-8');
 const port = process.env.PORT || 8000;
-process.env.TZ = 'IST';
+// const nDate = new Date().toLocaleTimeString('en-US', {
+//     timeZone: 'Asia/Calcutta'
+//   });
+  
+//   console.log(nDate);
 const [city,keyId] = ['Bengaluru','56fbb9d617b319e04d5cb9185aa97f03'];
 const backgroundImg = {
     // night:'https://wallpapercave.com/wp/wp3284839.gif',
@@ -46,7 +50,10 @@ const kelToCel = (temp)=>{
     return celcius.toFixed(2);
 }
 const getLocalTime = (timestamp)=>{
-    return (new Date(timestamp*1000).toLocaleTimeString());
+    // return (new Date(timestamp*1000).toLocaleTimeString());
+    return new Date(timestamp*1000).toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Calcutta'
+      });
 }
 const replaceVal = (htmlFile,data)=>{
     const background = `background:${changeContainerBgColor(kelToCel(data.main.temp))}`;
